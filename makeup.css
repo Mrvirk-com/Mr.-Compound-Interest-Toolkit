@@ -5,7 +5,7 @@ body {
 }
 
 span {
-  color: #1d0dd4;
+  color: #ff1500;
 }
 
 input {
@@ -48,7 +48,7 @@ div {
 }
 
 a {
-  color: #1d0dd4;
+  color: #ff1500;
   font-weight: bold;
 }
 
@@ -58,7 +58,7 @@ div.boxes {
 }
 
 .result {
-  color: #1d0dd4;
+  color: #ff1500;
   font-weight: bold;
   font-size: 25px;
 }

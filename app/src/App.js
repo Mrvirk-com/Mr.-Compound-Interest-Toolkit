@@ -1,17 +1,22 @@
 import React from 'react';
 import './App.css';
+//import "denali-css/css/denali.css";
+//import "denali-icon-font/dist/denali-icon-font.css"; 
 
-import CompoundingCalculator from './components/CompoundingCalculator';
+import Main from './components/Main';
 import Footer from './components/Footer';
-import Header from './components/Header';
+import Menu from './components/Menu';
 
 function App() {
   return (
-    <div className="App">
-     <Header/>
-     <CompoundingCalculator/>
-     <Footer/>
-    </div>
+    <body>
+  <div style={{overflow:"auto"}}>
+     <Menu/>
+     <Main/>
+     
+  </div>
+  <Footer/>
+</body>
   );
 }
 
