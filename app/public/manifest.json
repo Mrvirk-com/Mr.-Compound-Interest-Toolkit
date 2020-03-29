@@ -1,0 +1,25 @@
+{
+  "short_name": "CI Calculator",
+  "name": "Compound Interest Calculator",
+  "icons": [
+    {
+      "src": "https://mrvirk.com/wp-content/uploads/2018/05/cropped-mrvirk-mobile-logo-v3-32x32.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "https://mrvirk.com/wp-content/uploads/2018/05/cropped-mrvirk-mobile-logo-v3-32x32.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://mrvirk.com/wp-content/uploads/2018/05/cropped-mrvirk-mobile-logo-v3-32x32.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
