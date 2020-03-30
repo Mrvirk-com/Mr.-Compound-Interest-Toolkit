@@ -38,6 +38,9 @@ select {
 
 p {
   font-size: 20px;
+}
+
+p.calculator{
   text-align: center;
 }
 
