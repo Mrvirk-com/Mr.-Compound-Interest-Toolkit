@@ -2,7 +2,7 @@
 Mr. Compound Interest Calculator, Growth Graphs and Projections
 
 # Website
-https://mrvirk.com/compound-interest-calculator/ (Work in Progress, tool not available yet)
+https://mrvirk.com/compound-interest-calculator/ (Beta)
 
 # Collaboration and Contributions
 Feel free to make contributions by making a pull request.
