@@ -5,7 +5,7 @@ body {
 }
 
 span {
-  color: #1d0dd4;
+  color: #ebae34;
 }
 
 input {
@@ -17,6 +17,10 @@ input {
   border: 0.5px solid black;
   box-sizing: border-box;
   background-color: #f2f2f2;
+  text-align: center;
+}
+
+option{
   text-align: center;
 }
 
@@ -60,7 +64,7 @@ div {
 }
 
 a {
-  color: #1d0dd4;
+  color: #ebae34;
   font-weight: bold;
 }
 
@@ -70,7 +74,7 @@ div.boxes {
 }
 
 .result {
-  color: #1d0dd4;
+  color: #ebae34;
   font-weight: bold;
   font-size: 25px;
 }

@@ -35,11 +35,14 @@
   <div style="overflow:auto">
     <div class="menu">
       <a href="#">Home</a>
+      <a href="https://mrvirk.com/dividend-calculator/?utm_source=ci_calculator&utm_medium=menu">Dividend Calculator</a>
       <a href="https://mrvirk.com/profit-calculator/?utm_source=ci_calculator&utm_medium=menu">Profit Calculator</a>
       <a href="https://mrvirk.com/percentage-calculator/?utm_source=ci_calculator&utm_medium=menu">Percentage Calculator</a>
       <a href="https://mrvirk.com/vat-calculator/?utm_source=ci_calculator&utm_medium=menu">VAT Calculator</a>
+      <a href="https://mrvirk.com/exponents-calculator/?utm_source=ci_calculator&utm_medium=menu">Exponents Calculator</a>
       <a href="https://mrvirk.com/discount-calculator/?utm_source=ci_calculator&utm_medium=menu">Discount Calculator</a>
-      <a href="https://sp500.mrvirk.com/?utm_source=ci_calculator&utm_medium=menu">S&P 500 Directory</a>
+      <a href="https://mrvirk.com/percent-off-calculator/?utm_source=ci_calculator&utm_medium=menu">Percent Off Calculator</a>
+      <a href="https://mrvirk.com/sp500/?utm_source=ci_calculator&utm_medium=menu">S&P 500 Directory</a>
       <div style="padding:15px;text-align:center;">
         <!--Advertising space -->
       </div>
@@ -56,32 +59,27 @@
           <div class="secondary_boxes">
             <form id="compounding_form">
               <p>
-                Principal
-                <input type="number" name="principal" value="25">
+                Principal $
+                <input type="number" name="principal" value="1000">
                 Interest Rate(%)
-                <select id="interest_rate_frequency_selection" name="compounding_frequency">
-                  <option value="yearly" selected>Yearly</option>
-                  <option value="monthly">Monthly</option>
-                  <option value="quarterly">Quarterly</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="daily">Daily</option>
+                <input type="number" name="interest_rate" value="15">
+                Compounding Frequency
+                <select id="compounding_frequency" name="compounding_frequency">
+                  <option value="1" selected>Yearly</option>
+                  <option value="12">Monthly</option>
+                  <option value="4">Quarterly</option>
                 </select>
-                <input type="number" name="interest_rate" value="8">
-
-
-                Time for Growth
-                <input type="number" name="growth_time" value="30">
+                Growth Period (in years)
+                <input type="number" name="growth_period" value="30">
                 Additional Deposits
-                <select id="deposits_frequency_selection" name="deposits_frequency">
-                  <option value="yearly">Yearly</option>
-                  <option value="monthly" selected>Monthly</option>
-                  <option value="quarterly">Quarterly</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="daily">Daily</option>
+                <input type="number" name="deposit" value="10">
+                <select id="deposit_frequency" name="deposit_frequency">
+                  <option value="1">Yearly</option>
+                  <option value="12" selected>Monthly</option>
+                  <option value="4">Quarterly</option>
+                  <option value="52">Weekly</option>
+                  <option value="365">Daily</option>
                 </select>
-                <input type="number" name="deposits" value="10">
-
-
               </p>
 
           </div>
@@ -95,12 +93,14 @@
 
 
               <p>
-                Total Growth %
-                <input type="text" name="growth_percent" class="result">
-                Future Value
-                <input type="text" name="future_value" class="result">
                 Your Contributions
                 <input type="text" name="your_contributions" class="result">
+                Future Value
+                <input type="text" name="future_value" class="result">
+                Interest Amount
+                <input type="text" name="interest_amount" class="result">
+                Total Growth %
+                <input type="text" name="growth_percent" class="result">
                 Profit
                 <input type="text" name="profit" class="result">
 
