@@ -61,7 +61,7 @@ function compoundingCalculator() {
 
   interest_amount.value = "$ " + (compound_interest - principal).toFixed(2);
 
-  growth_percent.value = ((compound_interest / principal) * 100).toFixed(2) + " %";
+  growth_percent.value = (((compound_interest - principal) / principal) * 100).toFixed(2) + " %";
 }
 
 function compoundingChart(principal, compound_interest) {
