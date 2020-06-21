@@ -70,7 +70,7 @@
                   <option value="4">Quarterly</option>
                 </select>
                 Growth Period (in years)
-                <input type="number" name="growth_period" value="25">
+                <input type="number" name="growth_period" value="10">
                 Additional Deposits
                 <input type="number" name="deposit" value="10">
                 <select id="deposit_frequency" name="deposit_frequency">
@@ -119,29 +119,24 @@
         </script>
       </div>
 
-      <div class="boxes">
-      Graph 1 - Principal and Compound Interest Contribution in your wealth
+      <div >
+      Graph 1 - Metrics Comparison by Year
+      <div id="barchart_material" style="width: 900px; height: 500px"></div>
+      </div>
+      
+      <div>
+      Graph 2 - Principal and Compound Interest Contribution in your wealth
       <div id="chart_div"></div>
       </div>
 
-      <div class="boxes">
-      Graph 2 - Breakdown by Year
+      <div>
+      Graph 3 - Compound Interest vs Simple Interest
+      <div id="compound_vs_simple_div" style="width: 900px; height: 500px"></div>
+      </div>
+
+      <div>
+      Graph 4 - Data Breakdown by Year
       <div id="table_div"></div>
-      </div>
-
-
-      <div class="boxes">
-      Graph 2 - Compounding vs Simple Interest
-      <div id="compound_vs_simple_div"></div>
-      </div>
-
-
-
-
-
-      <div class="boxes">
-      Graph 4 - yearly_compound_growth_deposits_and_simple_intrest_corelation_chart
-      <div id="barchart_material" style="width: 900px; height: 500px;"></div>
       </div>
 
       <script src="logic.js"></script>

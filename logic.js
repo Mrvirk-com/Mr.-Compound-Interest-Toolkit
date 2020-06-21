@@ -1,8 +1,8 @@
 compoundingCalculator();
 //compoundingChart();
 //calculationsTable();
-compounding_vs_simple_interest_chart();
-yearly_compound_growth_deposits_and_simple_intrest_corelation_chart();
+//compounding_vs_simple_interest_chart();
+//yearlyMetricsComparison();
 compounding_form.oninput = function(event) {
   event.preventDefault();
   compoundingCalculator();
@@ -25,6 +25,7 @@ function compoundingCalculator() {
   let interest_amount = form.interest_amount;
   let growth_percent = form.growth_percent;
   let profit = form.profit;
+
   //calculations
   // The equation is A = p * [[1 + (r/n)] ^ nt]
   //compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * growth_period)));
@@ -32,16 +33,32 @@ function compoundingCalculator() {
   //["Year", "Principal", "Future Value"]
   let compound_interest;
   let dataArray = [];
+  let dataArray2 = [];
+  let simple_interest;
+  let dataArray3 = [
+    ['Year', 'Simple Interest', 'Compound Interest']
+  ];
+
   let i;
   for (i = 1; i <= growth_period; i++) {
     compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * i)));
     dataArray.push([i, principal, Number(compound_interest.toFixed(2))]);
+    dataArray2.unshift([i, Number(compound_interest.toFixed(2)), Number((compound_interest - principal).toFixed(2)), principal, 200]);
+
+    simple_interest = (principal * interest_rate * growth_period) / 100;
+    dataArray3.push([i, simple_interest, compound_interest]);
+
   }
 
-  console.log(dataArray);
+
   future_value.value = compound_interest.toFixed(2);
   calculationsTable(dataArray);
   compoundingChart(principal, Number(compound_interest.toFixed(2)));
+
+  dataArray2.unshift(['Year', 'Future Portfolio Value', 'Compound Interest', 'Principal', 'Deposits', ]);
+  yearlyMetricsComparison(dataArray2);
+
+  compounding_vs_simple_interest_chart(dataArray3);
 
 }
 
@@ -83,23 +100,17 @@ function compoundingChart(principal, compound_interest) {
   }
 }
 
-function compounding_vs_simple_interest_chart() {
+function compounding_vs_simple_interest_chart(dataArray3) {
   google.charts.load('current', {
     'packages': ['corechart']
   });
   google.charts.setOnLoadCallback(drawChart);
 
   function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses'],
-      ['2013', 1000, 400],
-      ['2014', 1170, 460],
-      ['2015', 660, 1120],
-      ['2016', 1030, 540]
-    ]);
+    var data = google.visualization.arrayToDataTable(dataArray3);
 
     var options = {
-      title: 'Company Performance',
+      title: '',
       hAxis: {
         title: 'Year',
         titleTextStyle: {
@@ -116,27 +127,22 @@ function compounding_vs_simple_interest_chart() {
   }
 }
 
-function yearly_compound_growth_deposits_and_simple_intrest_corelation_chart() {
+function yearlyMetricsComparison(dataArray2) {
   google.charts.load('current', {
     'packages': ['bar']
   });
   google.charts.setOnLoadCallback(drawChart);
 
   function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses', 'Profit'],
-      ['2014', 1000, 400, 200],
-      ['2015', 1170, 460, 250],
-      ['2016', 660, 1120, 300],
-      ['2017', 1030, 540, 350]
-    ]);
+    console.log(dataArray2);
+    var data = google.visualization.arrayToDataTable(dataArray2);
 
     var options = {
       chart: {
-        title: 'Company Performance',
-        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+        title: '',
+        subtitle: '',
       },
-      bars: 'horizontal' // Required for Material Bar Charts.
+      bars: 'vertical' // Required for Material Bar Charts.
     };
 
     var chart = new google.charts.Bar(document.getElementById('barchart_material'));
