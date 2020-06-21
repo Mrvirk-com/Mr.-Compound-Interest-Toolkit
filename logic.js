@@ -1,5 +1,5 @@
 compoundingCalculator();
-compoundingChart();
+//compoundingChart();
 //calculationsTable();
 compounding_vs_simple_interest_chart();
 yearly_compound_growth_deposits_and_simple_intrest_corelation_chart();
@@ -12,7 +12,7 @@ compounding_form.oninput = function(event) {
 function compoundingCalculator() {
   //inputs
   const form = document.forms.compounding_form.elements;
-  let principal = form.principal.value;
+  let principal = Number(form.principal.value);
   let interest_rate = form.interest_rate.value;
   let compounding_frequency = form.compounding_frequency.value;
   let growth_period = form.growth_period.value;
@@ -35,16 +35,17 @@ function compoundingCalculator() {
   let i;
   for (i = 1; i <= growth_period; i++) {
     compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * i)));
-    dataArray.push([i, Number(principal), Number(compound_interest.toFixed(2))]);
+    dataArray.push([i, principal, Number(compound_interest.toFixed(2))]);
   }
 
   console.log(dataArray);
   future_value.value = compound_interest.toFixed(2);
   calculationsTable(dataArray);
+  compoundingChart(principal, Number(compound_interest.toFixed(2)));
 
 }
 
-function compoundingChart() {
+function compoundingChart(principal, compound_interest) {
 
   // Load the Visualization API and the corechart package.
   google.charts.load('current', {
@@ -61,21 +62,19 @@ function compoundingChart() {
 
     // Create the data table.
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Topping');
-    data.addColumn('number', 'Slices');
+    data.addColumn('string', 'Key');
+    data.addColumn('number', 'Value');
     data.addRows([
-      ['Mushrooms', 3],
-      ['Onions', 1],
-      ['Olives', 1],
-      ['Zucchini', 1],
-      ['Pepperoni', 2]
+      ['Principal', principal],
+      ['Compound Interest', compound_interest - principal],
+
     ]);
 
     // Set chart options
     var options = {
-      'title': 'How Much Pizza I Ate Last Night',
-      'width': 400,
-      'height': 300
+      'title': '',
+      'width': 860,
+      'height': 600
     };
 
     // Instantiate and draw our chart, passing in some options.

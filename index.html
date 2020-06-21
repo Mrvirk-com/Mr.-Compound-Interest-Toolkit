@@ -70,7 +70,7 @@
                   <option value="4">Quarterly</option>
                 </select>
                 Growth Period (in years)
-                <input type="number" name="growth_period" value="30">
+                <input type="number" name="growth_period" value="25">
                 Additional Deposits
                 <input type="number" name="deposit" value="10">
                 <select id="deposit_frequency" name="deposit_frequency">
@@ -120,9 +120,15 @@
       </div>
 
       <div class="boxes">
-      Graph 1 - Showing Compounding (Example: $1000's compounded growth for 40 years at the rate of 10%)
+      Graph 1 - Principal and Compound Interest Contribution in your wealth
       <div id="chart_div"></div>
       </div>
+
+      <div class="boxes">
+      Graph 2 - Breakdown by Year
+      <div id="table_div"></div>
+      </div>
+
 
       <div class="boxes">
       Graph 2 - Compounding vs Simple Interest
@@ -130,10 +136,7 @@
       </div>
 
 
-      <div class="boxes">
-      Graph 3 - Calculations Table
-      <div id="table_div"></div>
-      </div>
+
 
 
       <div class="boxes">
