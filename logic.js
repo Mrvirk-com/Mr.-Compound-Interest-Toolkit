@@ -1,6 +1,6 @@
 compoundingCalculator();
 compoundingChart();
-calculationsTable();
+//calculationsTable();
 compounding_vs_simple_interest_chart();
 yearly_compound_growth_deposits_and_simple_intrest_corelation_chart();
 compounding_form.oninput = function(event) {
@@ -29,17 +29,18 @@ function compoundingCalculator() {
   // The equation is A = p * [[1 + (r/n)] ^ nt]
   //compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * growth_period)));
   your_contributions.value = principal;
-
+  //["Year", "Principal", "Future Value"]
   let compound_interest;
   let dataArray = [];
   let i;
   for (i = 1; i <= growth_period; i++) {
     compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * i)));
-    dataArray.push([i, principal, compound_interest.toFixed(2)]);
+    dataArray.push([i, Number(principal), Number(compound_interest.toFixed(2))]);
   }
 
   console.log(dataArray);
   future_value.value = compound_interest.toFixed(2);
+  calculationsTable(dataArray);
 
 }
 
@@ -146,7 +147,7 @@ function yearly_compound_growth_deposits_and_simple_intrest_corelation_chart() {
 }
 
 
-function calculationsTable() {
+function calculationsTable(dataArray) {
   google.charts.load('current', {
     'packages': ['table']
   });
@@ -154,27 +155,10 @@ function calculationsTable() {
 
   function drawTable() {
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Name');
-    data.addColumn('number', 'Salary');
-    data.addColumn('boolean', 'Full Time Employee');
-    data.addRows([
-      ['Mike', {
-        v: 10000,
-        f: '$10,000'
-      }, true],
-      ['Jim', {
-        v: 8000,
-        f: '$8,000'
-      }, false],
-      ['Alice', {
-        v: 12500,
-        f: '$12,500'
-      }, true],
-      ['Bob', {
-        v: 7000,
-        f: '$7,000'
-      }, true]
-    ]);
+    data.addColumn('number', 'Year');
+    data.addColumn('number', 'Principal');
+    data.addColumn('number', 'Future Value');
+    data.addRows(dataArray);
 
     var table = new google.visualization.Table(document.getElementById('table_div'));
 
