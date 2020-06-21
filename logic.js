@@ -1,16 +1,12 @@
-compoundingCalculator();
-//compoundingChart();
-//calculationsTable();
-//compounding_vs_simple_interest_chart();
-//yearlyMetricsComparison();
+compoundInterestCalculator();
 compounding_form.oninput = function(event) {
   event.preventDefault();
-  compoundingCalculator();
+  compoundInterestCalculator();
 };
 
+function compoundInterestCalculator() {
 
-function compoundingCalculator() {
-  //inputs
+  //user inputs
   const form = document.forms.compounding_form.elements;
   let principal = Number(form.principal.value);
   let interest_rate = form.interest_rate.value;
@@ -26,45 +22,44 @@ function compoundingCalculator() {
   let growth_percent = form.growth_percent;
 
   //calculations
-  // The equation is A = p * [[1 + (r/n)] ^ nt]
-  //compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * growth_period)));
-  your_contributions.value = "$ " + principal;
-  //["Year", "Principal", "Future Value"]
+
+  //Formmula | compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * growth_period)));
   let compound_interest;
-  let dataArray = [];
-  let dataArray2 = [];
+  let dataArray = []; //array to store data for Table chart [Year, Princial, Future Value]
+  let dataArray2 = []; //array to store data for Column chart [Year, Future Value, Compound Interest, Principal, Deposits]
   let simple_interest;
   let dataArray3 = [
     ['Year', 'Simple Interest', 'Compound Interest']
-  ];
+  ]; //array to store data for Area chart [Year, Simple Interest, Future Value]
 
+  //looping, so we can generate the data by the year and store in arrays for drawing charts
   let i;
+
   for (i = 1; i <= growth_period; i++) {
     compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * i)));
     dataArray.push([i, principal, Number(compound_interest.toFixed(2))]);
     dataArray2.unshift([i, Number(compound_interest.toFixed(2)), Number((compound_interest - principal).toFixed(2)), principal, 200]);
-
     simple_interest = (principal * interest_rate * growth_period) / 100;
     dataArray3.push([i, simple_interest, compound_interest]);
-
   }
 
-
-  future_value.value = "$ " + compound_interest.toFixed(2);
-  calculationsTable(dataArray);
-  compoundingChart(principal, Number(compound_interest.toFixed(2)));
-
   dataArray2.unshift(['Year', 'Future Portfolio Value', 'Compound Interest', 'Principal', 'Deposits', ]);
-  yearlyMetricsComparison(dataArray2);
 
-  compounding_vs_simple_interest_chart(dataArray3);
-
+  //outputting calculations
+  your_contributions.value = "$ " + principal;
+  future_value.value = "$ " + compound_interest.toFixed(2);
   interest_amount.value = "$ " + (compound_interest - principal).toFixed(2);
-
   growth_percent.value = (((compound_interest - principal) / principal) * 100).toFixed(2) + " %";
+
+  //drawing charts
+  tableChart(dataArray);
+  pieChart(principal, Number(compound_interest.toFixed(2)));
+  columnChart(dataArray2);
+  areaChart(dataArray3);
 }
 
-function compoundingChart(principal, compound_interest) {
+//Pie Chart on Principal and Compound Interest Contribution in your wealth
+function pieChart(principal, compound_interest) {
 
   // Load the Visualization API and the corechart package.
   google.charts.load('current', {
@@ -102,7 +97,8 @@ function compoundingChart(principal, compound_interest) {
   }
 }
 
-function compounding_vs_simple_interest_chart(dataArray3) {
+//Area Chart to Compound Interest vs Simple Interest
+function areaChart(dataArray3) {
   google.charts.load('current', {
     'packages': ['corechart']
   });
@@ -129,7 +125,8 @@ function compounding_vs_simple_interest_chart(dataArray3) {
   }
 }
 
-function yearlyMetricsComparison(dataArray2) {
+//Column Chart to show [Future Value, Compound Interest, Princial and Deposits] overs time (per year)
+function columnChart(dataArray2) {
   google.charts.load('current', {
     'packages': ['bar']
   });
@@ -153,8 +150,8 @@ function yearlyMetricsComparison(dataArray2) {
   }
 }
 
-
-function calculationsTable(dataArray) {
+//Table Chart to provide Future Value of the Portfolio by the year
+function tableChart(dataArray) {
   google.charts.load('current', {
     'packages': ['table']
   });
