@@ -24,12 +24,11 @@ function compoundingCalculator() {
   let future_value = form.future_value;
   let interest_amount = form.interest_amount;
   let growth_percent = form.growth_percent;
-  let profit = form.profit;
 
   //calculations
   // The equation is A = p * [[1 + (r/n)] ^ nt]
   //compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * growth_period)));
-  your_contributions.value = principal;
+  your_contributions.value = "$ " + principal;
   //["Year", "Principal", "Future Value"]
   let compound_interest;
   let dataArray = [];
@@ -51,7 +50,7 @@ function compoundingCalculator() {
   }
 
 
-  future_value.value = compound_interest.toFixed(2);
+  future_value.value = "$ " + compound_interest.toFixed(2);
   calculationsTable(dataArray);
   compoundingChart(principal, Number(compound_interest.toFixed(2)));
 
@@ -60,6 +59,9 @@ function compoundingCalculator() {
 
   compounding_vs_simple_interest_chart(dataArray3);
 
+  interest_amount.value = "$ " + (compound_interest - principal).toFixed(2);
+
+  growth_percent.value = ((compound_interest / principal) * 100).toFixed(2) + " %";
 }
 
 function compoundingChart(principal, compound_interest) {

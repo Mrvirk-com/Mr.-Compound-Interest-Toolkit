@@ -49,12 +49,17 @@
     </div>
 
     <div class="main">
-      <h1><span>Compound Interest</span> Calculator</h1>
-      <b>Compound Interest Calculator helps calculate and visualise the growth and compounding of your money and investments</b>
+      <h1><span>Compound Interest</span> Calculator | <span style="color:red">
+        Beta*</span></h1>
+        <span style="color:red">
+          Beta Launch: UI Improvements and New Features Coming Soon, currently only supported on Desktop, Mobile Friendlyness on its way</span>
+          <br/>
+      <p>Compound Interest Calculator helps calculate and visualise the growth and compounding of your money and investments</p>
+
       <div style="overflow:auto">
         <div class="calculator_box">
           <div class="boxes">
-            <h1>Calculator</h1>
+            <p>Calculator</p>
           </div>
           <div class="secondary_boxes">
             <form id="compounding_form">
@@ -72,10 +77,11 @@
                 Growth Period (in years)
                 <input type="number" name="growth_period" value="10">
                 Additional Deposits
-                <input type="number" name="deposit" value="10">
+                <input type="" name="deposit" value="Coming Soon">
                 <select id="deposit_frequency" name="deposit_frequency">
+                  <option value="0" selected>Coming Soon</option>
                   <option value="1">Yearly</option>
-                  <option value="12" selected>Monthly</option>
+                  <option value="12">Monthly</option>
                   <option value="4">Quarterly</option>
                   <option value="52">Weekly</option>
                   <option value="365">Daily</option>
@@ -87,7 +93,7 @@
         </div>
         <div class="results_box">
           <div class="boxes">
-            <h1>Results</h1>
+            <p>Results</p>
           </div>
           <div class="secondary_boxes">
 
@@ -97,12 +103,11 @@
                 <input type="text" name="your_contributions" class="result">
                 Future Value
                 <input type="text" name="future_value" class="result">
-                Interest Amount
+                Compound Interest Amount
                 <input type="text" name="interest_amount" class="result">
                 Total Growth %
                 <input type="text" name="growth_percent" class="result">
-                Profit
-                <input type="text" name="profit" class="result">
+
 
               </p>
             </form>
@@ -111,6 +116,17 @@
         </div>
 
       </div>
+
+      <div>
+      Graph 1 - Metrics Comparison by Year
+      <div id="barchart_material" style="width: 900px; height: 500px"></div>
+      </div>
+
+      <div>
+      Graph 2 - Principal and Compound Interest Contribution in your wealth
+      <div id="chart_div"></div>
+      </div>
+
       <div style="padding:15px;text-align:center;">
         <!-- Percentage Calculator | 728x90 -->
         <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6088722940843183" data-ad-slot="2259133924"></ins>
@@ -118,17 +134,6 @@
           (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       </div>
-
-      <div >
-      Graph 1 - Metrics Comparison by Year
-      <div id="barchart_material" style="width: 900px; height: 500px"></div>
-      </div>
-      
-      <div>
-      Graph 2 - Principal and Compound Interest Contribution in your wealth
-      <div id="chart_div"></div>
-      </div>
-
       <div>
       Graph 3 - Compound Interest vs Simple Interest
       <div id="compound_vs_simple_div" style="width: 900px; height: 500px"></div>
@@ -137,6 +142,14 @@
       <div>
       Graph 4 - Data Breakdown by Year
       <div id="table_div"></div>
+      </div>
+
+      <div style="padding:15px;text-align:center;">
+        <!-- Percentage Calculator | 728x90 -->
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6088722940843183" data-ad-slot="2259133924"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
 
       <script src="logic.js"></script>
