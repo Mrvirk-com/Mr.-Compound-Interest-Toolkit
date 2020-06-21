@@ -31,14 +31,14 @@ function compoundingCalculator() {
   your_contributions.value = principal;
 
   let compound_interest;
+  let dataArray = [];
   let i;
   for (i = 1; i <= growth_period; i++) {
-    compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * growth_period)));
-    console.log("Run = " + i);
-
+    compound_interest = (principal * Math.pow((1 + (interest_rate / (compounding_frequency * 100))), (compounding_frequency * i)));
+    dataArray.push([i, principal, compound_interest.toFixed(2)]);
   }
 
-
+  console.log(dataArray);
   future_value.value = compound_interest.toFixed(2);
 
 }
